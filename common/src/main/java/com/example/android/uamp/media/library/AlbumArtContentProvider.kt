@@ -53,9 +53,9 @@ internal class AlbumArtContentProvider : ContentProvider() {
         val context = this.context ?: return null
         val remoteUri = uriMap[uri] ?: throw FileNotFoundException(uri.path)
 
-        var file = File(context.cacheDir, uri.path)
+        var file = uri.path?.let { File(context.cacheDir, it) }
 
-        if (!file.exists()) {
+        if (file?.exists() == false) {
             // Use Glide to download the album art.
             val cacheFile = Glide.with(context)
                 .asFile()
