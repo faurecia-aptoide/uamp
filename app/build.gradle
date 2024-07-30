@@ -16,8 +16,11 @@
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
-apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.google.devtools.ksp'
+
+def keystorePropertiesFile = rootProject.file(".faapriv/keystore.properties")
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
@@ -42,18 +45,54 @@ android {
         vectorDrawables {
             useSupportLibrary true
         }
+        ndk {
+            abiFilters 'arm64-v8a', 'armeabi-v7a'
+        }
     }
 
     buildFeatures {
         viewBinding true
-        dataBinding true
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file(keystoreProperties['debug_keystore_file'])
+            storePassword keystoreProperties['debug_keystore_password']
+            keyAlias keystoreProperties['debug_key_alias']
+            keyPassword keystoreProperties['debug_key_password']
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+        release {
+            storeFile file(keystoreProperties['release_keystore_file'])
+            storePassword keystoreProperties['release_keystore_password']
+            keyAlias keystoreProperties['release_key_alias']
+            keyPassword keystoreProperties['release_key_password']
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
     }
 
     buildTypes {
-        release {
+        debug {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+            applicationVariants.all { variant ->
+                renameAPK(variant, defaultConfig)
+            }
         }
+        release {
+            shrinkResources true
+            minifyEnabled true
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            applicationVariants.all { variant ->
+                renameAPK(variant, defaultConfig)
+            }
+        }
+    }
+    packagingOptions {
+        exclude "/META-INF/*"
     }
 }
 
@@ -73,5 +112,14 @@ dependencies {
 
     // Glide dependencies
     implementation "com.github.bumptech.glide:glide:$glide_version"
-    kapt "com.github.bumptech.glide:compiler:$glide_version"
+    //noinspection KaptUsageInsteadOfKsp
+    annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
+}
+
+def renameAPK(variant, config) {
+    variant.outputs.all { output ->
+        outputFileName = "uamp" + "-" +
+                config.versionName + "-vc" +
+                config.versionCode + "-" + variant.name + ".apk"
+    }
 }

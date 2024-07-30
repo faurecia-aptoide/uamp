@@ -30,6 +30,7 @@ import com.example.android.uamp.utils.InjectorUtils
 import com.example.android.uamp.viewmodels.MainActivityViewModel
 import com.google.android.gms.cast.framework.CastButtonFactory
 import com.google.android.gms.cast.framework.CastContext
+import com.example.android.uamp.media.R as K
 
 class MainActivity : AppCompatActivity() {
 
@@ -90,12 +91,12 @@ class MainActivity : AppCompatActivity() {
     @Override
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         super.onCreateOptionsMenu(menu)
-        menuInflater.inflate(R.menu.main_activity_menu, menu)
+        menuInflater.inflate(K.menu.main_activity_menu, menu)
 
         /**
          * Set up a MediaRouteButton to allow the user to control the current media playback route
          */
-        CastButtonFactory.setUpMediaRouteButton(this, menu, R.id.media_route_menu_item)
+        menu?.let { CastButtonFactory.setUpMediaRouteButton(this, it, K.id.media_route_menu_item) }
         return true
     }
 
