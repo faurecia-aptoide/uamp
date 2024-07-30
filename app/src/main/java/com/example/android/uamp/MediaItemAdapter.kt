@@ -26,7 +26,6 @@ import com.bumptech.glide.Glide
 import com.example.android.uamp.MediaItemData.Companion.PLAYBACK_RES_CHANGED
 import com.example.android.uamp.databinding.FragmentMediaitemBinding
 import com.example.android.uamp.fragments.MediaItemFragment
-import com.example.android.uamp.media.R as K
 
 /**
  * [RecyclerView.Adapter] of [MediaItemData]s used by the [MediaItemFragment].
@@ -73,7 +72,7 @@ class MediaItemAdapter(
 
             Glide.with(holder.albumArt)
                 .load(mediaItem.albumArtUri)
-                .placeholder(K.drawable.default_art)
+                .placeholder(R.drawable.default_art)
                 .into(holder.albumArt)
         }
     }

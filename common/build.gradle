@@ -16,7 +16,8 @@
 
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'com.google.devtools.ksp'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
@@ -38,19 +39,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    buildFeatures {
-        buildConfig true
-    }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility = '1.8'
     }
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-    packagingOptions {
-        exclude "/META-INF/*"
-    }
+
 }
 
 dependencies {
@@ -58,8 +50,8 @@ dependencies {
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_coroutines_version"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlin_coroutines_version"
 
-    api "androidx.media2:media2-player:$androidx_media_version"
-    api "androidx.media2:media2-session:$androidx_media_version"
+    api "androidx.media:media:$androidx_media_version"
+
     api "com.google.code.gson:gson:$gson_version"
 
     // ExoPlayer dependencies
@@ -82,8 +74,7 @@ dependencies {
 
     // Glide dependencies
     api "com.github.bumptech.glide:glide:$glide_version"
-
-    annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
+    kapt "com.github.bumptech.glide:compiler:$glide_version"
 
     // Testing
     testImplementation "junit:junit:$junit_version"

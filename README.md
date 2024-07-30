@@ -5,50 +5,51 @@ across multiple form factors and provides a consistent user experience
 on Android phones, tablets, Android Auto, Android Wear, Android TV, Google Cast devices,
 and with the Google Assistant. 
 
+To get started with UAMP please read the [full guide](docs/FullGuide.md).
+
+![Screenshot showing UAMP's UI for browsing albums and songs](docs/images/1-browse-albums-screenshot.png "Browse albums screenshot")
+![Screenshot showing UAMP's UI for playing a song](docs/images/2-play-song-screenshot.png "Play song screenshot")
 
 Pre-requisites
 --------------
 
 - Android Studio 3.x
-or
-- CMD
 
-Changing the package name
+Getting Started
 ---------------
 
-In order to change the package, for testing purposes, you need to change the ApplicationId of the desired platform.
-- For mobile: [build.gradle](/app/build.gradle)
-- For automotive: [build.gradle](/automotive/build.gradle)
+This sample uses the Gradle build system. To build this project, use the
+"gradlew build" command or use "Import Project" in Android Studio.
 
-After locating the desired build.gradle, find the ```defaultConfig``` and change the ```applicationId``` for the desired package.
-![Change here](docs/images/change.png "Change here")
-After this, you need to sync. If you are making changes in AndroidStudio, there will be a blue banner asking you to sync. Like this:
-![sync now](docs/images/sync.png "Sync now")
-Press "sync now" and wait until it completes.
-If you are making changes in another IDE or Text editor, open a terminal, ```cd``` into the project folder and run the command ```gradle sync```.
+Support
+-------
 
+- Check out the [FAQs page](docs/FAQs.md)
+- Stack Overflow: http://stackoverflow.com/questions/tagged/android
 
-Building an APK
----------------
+If you've found an error in this sample, please
+[file an issue](https://github.com/android/UAMP/issues)
 
-The easiest way of building an APK is as follows:
+Patches are encouraged and may be submitted by forking this project and
+submitting a pull request through GitHub. Please see [CONTRIBUTING.md](CONTRIBUTING.md) for more
+details.
 
-- Open a terminal and ```cd``` into the project folder
-- Depending on the type of APK that you want:
-  - For debug, run the command: 
-    - mobile -> ```gradle app:assembleDebug``` 
-    - automotive -> ```gradle automotive:assembleDebug```
-  - For release, run the command: 
-    - mobile -> ```gradle automotive:assembleRelease``` 
-    - automotive -> ```gradle automotive:assembleRelease```
+Audio
+-----
 
-Wait for the command to complete.
+Music provided by the [Free Music Archive](http://freemusicarchive.org/).
 
-Once it's done, you can find the APKs inside this folders:
-- [Mobile, debug](/app/build/outputs/apk/debug)
-- [Mobile, release](/app/build/outputs/apk/release)
-- [Automotive, debug](/automotive/build/outputs/apk/debug)
-- [Automotive, release](/automotive/build/outputs/apk/debug)
+- [Wake Up](http://freemusicarchive.org/music/The_Kyoto_Connection/Wake_Up_1957/) by
+[The Kyoto Connection](http://freemusicarchive.org/music/The_Kyoto_Connection/).
+
+Recordings provided by the [Ambisonic Sound Library](https://library.soundfield.com/).
+
+- [Pre Game Marching Band](https://library.soundfield.com/track/163) by Watson Wu
+- [Chickens on a Farm](https://library.soundfield.com/track/129) by Watson Wu
+- [Rural Market Busker](https://library.soundfield.com/track/55) by Stephan Schutze
+- [Steamtrain Interior](https://library.soundfield.com/track/65) by Stephan Schutze
+- [Rural Road Car Pass](https://library.soundfield.com/track/57) by Stephan Schutze
+- [10 Feet from Shore](https://library.soundfield.com/track/114) by Watson Wu
 
 License
 -------

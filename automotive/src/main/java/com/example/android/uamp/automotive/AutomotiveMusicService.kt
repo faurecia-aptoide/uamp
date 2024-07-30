@@ -19,7 +19,6 @@ package com.example.android.uamp.automotive
 import android.accounts.AccountManager
 import android.app.Activity
 import android.app.PendingIntent
-import android.app.PendingIntent.FLAG_IMMUTABLE
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -101,7 +100,7 @@ class AutomotiveMusicService : MusicService() {
      */
     private fun requireLogin() {
         val loginIntent = Intent(this, SignInActivity::class.java)
-        val loginActivityPendingIntent = PendingIntent.getActivity(this, 0, loginIntent, FLAG_IMMUTABLE)
+        val loginActivityPendingIntent = PendingIntent.getActivity(this, 0, loginIntent, 0)
         val extras = Bundle().apply {
             putString(ERROR_RESOLUTION_ACTION_LABEL, getString(R.string.error_login_button))
             putParcelable(ERROR_RESOLUTION_ACTION_INTENT, loginActivityPendingIntent)

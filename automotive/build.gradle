@@ -16,7 +16,8 @@
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'com.google.devtools.ksp'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
@@ -24,7 +25,7 @@ android {
     defaultConfig {
         applicationId "com.example.android.uamp.next"
 
-        minSdkVersion rootProject.minSdkVersion
+        minSdkVersion 21
         targetSdkVersion rootProject.targetSdkVersion
 
         versionCode 1
@@ -38,8 +39,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
     }
     kotlinOptions {
         jvmTarget = "1.8"
@@ -51,9 +52,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    packagingOptions {
-        exclude "/META-INF/*"
-    }
+
 }
 
 dependencies {
@@ -62,7 +61,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 
     implementation "androidx.core:core-ktx:$androidx_core_ktx_version"
-    implementation "androidx.preference:preference-ktx:$androidx_preference_version"
+    implementation "androidx.preference:preference:$androidx_preference_version"
     implementation "androidx.car:car:$androidx_car_version"
     implementation "androidx.constraintlayout:constraintlayout:$constraint_layout_version"
     implementation "androidx.appcompat:appcompat:$androidx_app_compat_version"
