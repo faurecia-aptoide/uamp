@@ -36,10 +36,10 @@ buildscript {
         fragment_version = '1.2.5'
         glide_version = '4.11.0'
         gms_strict_version_matcher_version = '1.0.3'
-        gradle_version = '4.2.2'
+        gradle_version = '7.4.2'
         gson_version = '2.8.5'
         junit_version = '4.13'
-        kotlin_version = '1.9.24'
+        kotlin_version = '1.6.0'
         kotlin_coroutines_version = '1.1.0'
         multidex_version = '1.0.3'
         play_services_auth_version = '18.1.0'
@@ -53,7 +53,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.2.2'
+        classpath "com.android.tools.build:gradle:$gradle_version"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "com.google.android.gms:strict-version-matcher-plugin:$gms_strict_version_matcher_version"
 
@@ -64,6 +64,7 @@ buildscript {
 
 plugins {
     id 'com.google.devtools.ksp' version '1.9.24-1.0.20' apply false
+    id 'org.jetbrains.kotlin.android' version '1.9.24' apply false
 }
 
 allprojects {

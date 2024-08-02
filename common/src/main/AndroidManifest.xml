@@ -16,7 +16,7 @@
   -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.android.uamp.media">
+    package="com.example.android.uamp.common">
 
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -39,7 +39,7 @@
         </receiver>
 
         <provider
-            android:name=".library.AlbumArtContentProvider"
+            android:name="com.example.android.uamp.common.media.library.AlbumArtContentProvider"
             android:authorities="com.example.android.uamp"
             android:exported="true" />
 

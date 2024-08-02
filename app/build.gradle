@@ -92,8 +92,15 @@ android {
         }
     }
     packagingOptions {
-        exclude "/META-INF/*"
+        jniLibs {
+            useLegacyPackaging = true
+            excludes += ['/META-INF/*']
+        }
+        resources {
+            excludes += ['/META-INF/*']
+        }
     }
+    namespace 'com.example.android.uamp'
 }
 
 dependencies {
@@ -118,7 +125,7 @@ dependencies {
 
 def renameAPK(variant, config) {
     variant.outputs.all { output ->
-        outputFileName = "uamp" + "-" +
+        outputFileName = project.name + "-" +
                 config.versionName + "-vc" +
                 config.versionCode + "-" + variant.name + ".apk"
     }

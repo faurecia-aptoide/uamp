@@ -34,13 +34,13 @@ import com.example.android.uamp.common.EMPTY_PLAYBACK_STATE
 import com.example.android.uamp.common.MusicServiceConnection
 import com.example.android.uamp.common.NOTHING_PLAYING
 import com.example.android.uamp.fragments.NowPlayingFragment
-import com.example.android.uamp.media.extensions.albumArtUri
-import com.example.android.uamp.media.extensions.currentPlayBackPosition
-import com.example.android.uamp.media.extensions.displaySubtitle
-import com.example.android.uamp.media.extensions.duration
-import com.example.android.uamp.media.extensions.id
-import com.example.android.uamp.media.extensions.isPlaying
-import com.example.android.uamp.media.extensions.title
+import com.example.android.uamp.common.media.extensions.albumArtUri
+import com.example.android.uamp.common.media.extensions.currentPlayBackPosition
+import com.example.android.uamp.common.media.extensions.displaySubtitle
+import com.example.android.uamp.common.media.extensions.duration
+import com.example.android.uamp.common.media.extensions.id
+import com.example.android.uamp.common.media.extensions.isPlaying
+import com.example.android.uamp.common.media.extensions.title
 
 /**
  * [ViewModel] for [NowPlayingFragment] which displays the album art in full size.

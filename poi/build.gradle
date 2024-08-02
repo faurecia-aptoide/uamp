@@ -1,0 +1,127 @@
+/*
+ * Copyright 2019 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'com.google.devtools.ksp'
+
+def keystorePropertiesFile = rootProject.file(".faapriv/keystore.properties")
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+
+    defaultConfig {
+        applicationId "com.example.android.uamp.next"
+
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file(keystoreProperties['debug_keystore_file'])
+            storePassword keystoreProperties['debug_keystore_password']
+            keyAlias keystoreProperties['debug_key_alias']
+            keyPassword keystoreProperties['debug_key_password']
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+        release {
+            storeFile file(keystoreProperties['release_keystore_file'])
+            storePassword keystoreProperties['release_keystore_password']
+            keyAlias keystoreProperties['release_key_alias']
+            keyPassword keystoreProperties['release_key_password']
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+            applicationVariants.all { variant ->
+                renameAPK(variant, defaultConfig)
+            }
+        }
+        release {
+            shrinkResources true
+            minifyEnabled true
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            applicationVariants.all { variant ->
+                renameAPK(variant, defaultConfig)
+            }
+        }
+    }
+    packagingOptions {
+        jniLibs {
+            useLegacyPackaging = true
+            excludes += ['/META-INF/*']
+        }
+        resources {
+            excludes += ['/META-INF/*']
+        }
+    }
+    namespace 'com.example.android.uamp.poi'
+}
+
+dependencies {
+    implementation project(':common')
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+
+    implementation "androidx.core:core-ktx:$androidx_core_ktx_version"
+    implementation "androidx.preference:preference-ktx:$androidx_preference_version"
+    implementation "androidx.car:car:$androidx_car_version"
+    implementation "androidx.constraintlayout:constraintlayout:$constraint_layout_version"
+    implementation "androidx.appcompat:appcompat:$androidx_app_compat_version"
+    implementation "androidx.lifecycle:lifecycle-extensions:$arch_lifecycle_version"
+
+    implementation("androidx.car.app:app:1.2.0")
+
+    testImplementation "junit:junit:$junit_version"
+
+    androidTestImplementation "androidx.test:runner:$androidx_test_runner_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
+}
+
+def renameAPK(variant, config) {
+    variant.outputs.all { output ->
+        outputFileName = project.name + "-" +
+                config.versionName + "-vc" +
+                config.versionCode + "-" + variant.name + ".apk"
+    }
+}

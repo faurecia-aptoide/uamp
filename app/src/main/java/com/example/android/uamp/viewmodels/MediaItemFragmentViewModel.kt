@@ -33,8 +33,8 @@ import com.example.android.uamp.common.EMPTY_PLAYBACK_STATE
 import com.example.android.uamp.common.MusicServiceConnection
 import com.example.android.uamp.common.NOTHING_PLAYING
 import com.example.android.uamp.fragments.MediaItemFragment
-import com.example.android.uamp.media.extensions.id
-import com.example.android.uamp.media.extensions.isPlaying
+import com.example.android.uamp.common.media.extensions.id
+import com.example.android.uamp.common.media.extensions.isPlaying
 
 /**
  * [ViewModel] for [MediaItemFragment].

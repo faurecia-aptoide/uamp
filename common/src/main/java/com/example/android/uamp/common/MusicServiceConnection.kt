@@ -29,8 +29,8 @@ import android.support.v4.media.session.PlaybackStateCompat
 import androidx.lifecycle.MutableLiveData
 import androidx.media.MediaBrowserServiceCompat
 import com.example.android.uamp.common.MusicServiceConnection.MediaBrowserConnectionCallback
-import com.example.android.uamp.media.NETWORK_FAILURE
-import com.example.android.uamp.media.extensions.id
+import com.example.android.uamp.common.media.NETWORK_FAILURE
+import com.example.android.uamp.common.media.extensions.id
 
 /**
  * Class that manages a connection to a [MediaBrowserServiceCompat] instance, typically a

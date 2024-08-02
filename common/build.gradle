@@ -22,9 +22,6 @@ android {
     compileSdkVersion rootProject.compileSdkVersion
 
     defaultConfig {
-        versionCode 1
-        versionName "1.0"
-
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
 
@@ -49,7 +46,13 @@ android {
         jvmTarget = "1.8"
     }
     packagingOptions {
-        exclude "/META-INF/*"
+        jniLibs {
+            useLegacyPackaging = true
+            excludes += ['/META-INF/*']
+        }
+        resources {
+            excludes += ['/META-INF/*']
+        }
     }
 }
 

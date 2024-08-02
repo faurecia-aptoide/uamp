@@ -29,10 +29,10 @@ import com.example.android.uamp.MainActivity
 import com.example.android.uamp.MediaItemData
 import com.example.android.uamp.common.MusicServiceConnection
 import com.example.android.uamp.fragments.NowPlayingFragment
-import com.example.android.uamp.media.extensions.id
-import com.example.android.uamp.media.extensions.isPlayEnabled
-import com.example.android.uamp.media.extensions.isPlaying
-import com.example.android.uamp.media.extensions.isPrepared
+import com.example.android.uamp.common.media.extensions.id
+import com.example.android.uamp.common.media.extensions.isPlayEnabled
+import com.example.android.uamp.common.media.extensions.isPlaying
+import com.example.android.uamp.common.media.extensions.isPrepared
 import com.example.android.uamp.utils.Event
 
 /**
