@@ -24,7 +24,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.example.android.uamp.fragments.MediaItemFragment
-import com.example.android.uamp.media.MusicService
+import com.example.android.uamp.common.media.MusicService
 import com.example.android.uamp.utils.Event
 import com.example.android.uamp.utils.InjectorUtils
 import com.example.android.uamp.viewmodels.MainActivityViewModel

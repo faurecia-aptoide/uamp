@@ -37,18 +37,37 @@ The easiest way of building an APK is as follows:
 - Depending on the type of APK that you want:
   - For debug, run the command: 
     - mobile -> ```gradle app:assembleDebug``` 
-    - automotive -> ```gradle automotive:assembleDebug```
+    - media -> ```gradle media:assembleDebug```
+    - poi -> ```gradle poi:assembleDebug```
+    - navigation -> ```gradle navigation:assembleDebug```
+    - parking -> ```gradle parking:assembleDebug```
+    - charging -> ```gradle charging:assembleDebug```
   - For release, run the command: 
-    - mobile -> ```gradle automotive:assembleRelease``` 
-    - automotive -> ```gradle automotive:assembleRelease```
+    - mobile -> ```gradle automotive:assembleRelease```
+    - media -> ```gradle media:assembleRelease```
+    - poi -> ```gradle poi:assembleRelease```
+    - navigation -> ```gradle navigation:assembleRelease```
+    - parking -> ```gradle parking:assembleRelease```
+    - charging -> ```gradle charging:assembleRelease```
 
 Wait for the command to complete.
 
 Once it's done, you can find the APKs inside this folders:
 - [Mobile, debug](/app/build/outputs/apk/debug)
 - [Mobile, release](/app/build/outputs/apk/release)
-- [Automotive, debug](/automotive/build/outputs/apk/debug)
-- [Automotive, release](/automotive/build/outputs/apk/debug)
+- [Media, debug](/media/build/outputs/apk/debug)
+- [Media, release](/media/build/outputs/apk/release)
+- [Poi, debug](/poi/build/outputs/apk/debug)
+- [Poi, release](/poi/build/outputs/apk/release)
+- [Navigation, debug](/navigation/build/outputs/apk/debug)
+- [Navigation, release](/navigation/build/outputs/apk/release)
+- [Parking, debug](/parking/build/outputs/apk/debug)
+- [Parking, release](/parking/build/outputs/apk/release)
+- [Charging, debug](/charging/build/outputs/apk/debug)
+- [Charging, release](/charging/build/outputs/apk/release)
+
+If for some reason it doesn't work, run the command ```gradle clean```.
+If you are using Android Studio, after the clean do "Invalidate caches and restart" from the "File" menu.
 
 License
 -------
