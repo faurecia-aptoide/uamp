@@ -15,10 +15,13 @@ or
 
 After cloning the project, don't forget do add ```.faapriv``` to the directory of the project
 When using CMD, there are some extra steps needed.
+
 If the file “local.properties” doesn’t exist in the project, please create it and paste this line:
 ```sdk.dir=/Users/yourUser/Library/Android/sdk```
+
 Modify ‘yourUser’ with the user you are currently using.
 After all this, run the following command:
+
 ```gradle build -x lint -x :common:testDebugUnitTest -x :common:testReleaseUnitTest```
 
 Changing the package name
