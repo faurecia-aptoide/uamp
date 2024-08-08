@@ -9,16 +9,28 @@ and with the Google Assistant.
 Pre-requisites
 --------------
 
-- Android Studio 3.x
+- Android Studio 3.x (preferably)
 or
 - CMD
+
+After cloning the project, don't forget do add ```.faapriv``` to the directory of the project
+When using CMD, there are some extra steps needed.
+If the file “local.properties” doesn’t exist in the project, please create it and paste this line:
+```sdk.dir=/Users/yourUser/Library/Android/sdk```
+Modify ‘yourUser’ with the user you are currently using.
+After all this, run the following command:
+```gradle build -x lint -x :common:testDebugUnitTest -x :common:testReleaseUnitTest```
 
 Changing the package name
 ---------------
 
 In order to change the package, for testing purposes, you need to change the ApplicationId of the desired platform.
 - For mobile: [build.gradle](/app/build.gradle)
-- For automotive: [build.gradle](/automotive/build.gradle)
+- For media: [build.gradle](/media/build.gradle)
+- For poi: [build.gradle](/poi/build.gradle)
+- For navigation: [build.gradle](/navigation/build.gradle)
+- For parking: [build.gradle](/parking/build.gradle)
+- For charging: [build.gradle](/charging/build.gradle)
 
 After locating the desired build.gradle, find the ```defaultConfig``` and change the ```applicationId``` for the desired package.
 ![Change here](docs/images/change.png "Change here")
