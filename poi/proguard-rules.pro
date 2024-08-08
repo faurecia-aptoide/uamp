@@ -24,3 +24,4 @@
 -dontwarn java.beans.IntrospectionException
 -dontwarn java.beans.Introspector
 -dontwarn java.beans.PropertyDescriptor
+-dontwarn kotlin.jvm.internal.SourceDebugExtension
