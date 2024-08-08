@@ -18,7 +18,6 @@ package com.example.android.uamp
 
 import android.media.AudioManager
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -30,7 +29,6 @@ import com.example.android.uamp.utils.InjectorUtils
 import com.example.android.uamp.viewmodels.MainActivityViewModel
 import com.google.android.gms.cast.framework.CastButtonFactory
 import com.google.android.gms.cast.framework.CastContext
-import com.example.android.uamp.media.R as K
 
 class MainActivity : AppCompatActivity() {
 
@@ -91,12 +89,12 @@ class MainActivity : AppCompatActivity() {
     @Override
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         super.onCreateOptionsMenu(menu)
-        menuInflater.inflate(K.menu.main_activity_menu, menu)
+        menuInflater.inflate(R.menu.main_activity_menu, menu)
 
         /**
          * Set up a MediaRouteButton to allow the user to control the current media playback route
          */
-        menu?.let { CastButtonFactory.setUpMediaRouteButton(this, it, K.id.media_route_menu_item) }
+        menu?.let { CastButtonFactory.setUpMediaRouteButton(this, it, R.id.media_route_menu_item) }
         return true
     }
 
